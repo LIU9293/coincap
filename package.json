@@ -1,0 +1,25 @@
+{
+  "name": "coincap",
+  "version": "0.0.1",
+  "description": "coincap data crawler",
+  "main": "index.js",
+  "scripts": {
+    "init_db": "node db/createTable.js",
+    "clear_db": "node db/deleteTable.js",
+    "fetch_coin_list": "node crawler/fetchCoinList",
+    "fetch_coin_history": "node crawler/fetchCoinHistory",
+    "refresh": "npm run clear_db && npm run init_db",
+    "rank": "node db/calculateRank.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "crawler": "^1.1.2",
+    "jsdom": "^11.5.1",
+    "moment": "^2.20.1",
+    "mysql": "^2.15.0",
+    "node-fetch": "^1.7.3",
+    "numeral": "^2.0.6"
+  }
+}
