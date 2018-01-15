@@ -10,8 +10,7 @@
     "fetch_coin_history": "node src/crawler/fetchCoinHistory",
     "refresh": "npm run clear_db && npm run init_db",
     "rank": "node src/db/calculateRank.js",
-    "init":
-      "npm run init_db && npm run fetch_coin_list && npm run fetch_coin_history && npm run rank",
+    "init": "npm run init_db && npm run fetch_coin_list && npm run fetch_coin_history && npm run rank",
     "start": "PORT=80 && pm2 start index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "prettier --write 'src/**/*.js'"
@@ -23,6 +22,7 @@
     "compression": "^1.7.1",
     "cors": "^2.8.4",
     "crawler": "^1.1.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "jsdom": "^11.5.1",
     "moment": "^2.20.1",
