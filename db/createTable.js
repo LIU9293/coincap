@@ -2,7 +2,8 @@ const connection = require('./index');
 
 connection.connect();
 
-connection.query(`
+connection.query(
+  `
   CREATE DATABASE IF NOT EXISTS coin;
 
   use coin;
@@ -12,6 +13,7 @@ connection.query(`
     coinName VARCHAR(255),
     coinCode VARCHAR(255),
     recordDate VARCHAR(255),
+    recordDataUnix BIGINT,
     open FLOAT,
     close FLOAT,
     high FLOAT,
@@ -31,12 +33,14 @@ connection.query(`
     PRIMARY KEY (_id)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-`, function (err, res, fields) {
-  if (err) {
-    console.log(err);
-    connection.end();
-  } else {
-    console.log('Create Database and Tables Successfully !');
-    connection.end();
+`,
+  function(err, res, fields) {
+    if (err) {
+      console.log(err);
+      connection.end();
+    } else {
+      console.log('Create Database and Tables Successfully !');
+      connection.end();
+    }
   }
-});
+);

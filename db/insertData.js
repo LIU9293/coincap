@@ -2,7 +2,6 @@ const connection = require('./index');
 connection.connect();
 
 function insertCoinList(coin, callback) {
-
   const query = `
     use coin;
 
@@ -11,7 +10,7 @@ function insertCoinList(coin, callback) {
     ('${coin.coinName}', '${coin.coinCode}', ${coin.rank});
   `;
 
-  connection.query(query, function (err, res, fields) {
+  connection.query(query, function(err, res, fields) {
     if (err) {
       callback(error, connection);
     } else {
@@ -21,15 +20,15 @@ function insertCoinList(coin, callback) {
 }
 
 function insertCoinHistory(coin, callback) {
-
   const query = `
     use coin;
 
     INSERT INTO coinHistory
-    (coinName, coinCode, recordDate, open, close, high, low, volume, marketCap) VALUES
+    (coinName, coinCode, recordDate, recordDataUnix, open, close, high, low, volume, marketCap) VALUES
     ('${coin.coinName}',
      '${coin.coinCode}',
      '${coin.date}',
+     ${coin.dateUnix},
      ${coin.open},
      ${coin.close},
      ${coin.high},
@@ -39,7 +38,7 @@ function insertCoinHistory(coin, callback) {
     );
   `;
 
-  connection.query(query, function (err, res, fields) {
+  connection.query(query, function(err, res, fields) {
     if (err) {
       callback(err, connection);
     } else {
@@ -48,8 +47,7 @@ function insertCoinHistory(coin, callback) {
   });
 }
 
-
 module.exports = {
   insertCoinList,
-  insertCoinHistory
+  insertCoinHistory,
 };
