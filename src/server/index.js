@@ -1,7 +1,7 @@
 const express = require('express');
 const compression = require('compression');
 const cors = require('cors');
-const { getCoinHistory, getAllCoinsForDay } = require('../db/api');
+const { getCoinHistory, getAllCoinsForDay, getAllCoins } = require('../db/api');
 
 const port = process.env.PORT || 8001;
 const app = express();
@@ -24,6 +24,12 @@ app.get('/api/coin_history/:coinCode', (req, res) => {
 app.get('/api/day_rank/:date', (req, res) => {
   const { date } = req.params;
   getAllCoinsForDay(date)
+    .then(data => res.json(data))
+    .catch(err => res.send(err));
+});
+
+app.get('/api/coins', (req, res) => {
+  getAllCoins()
     .then(data => res.json(data))
     .catch(err => res.send(err));
 });

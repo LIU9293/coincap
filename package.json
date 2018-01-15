@@ -10,8 +10,10 @@
     "fetch_coin_history": "node src/crawler/fetchCoinHistory",
     "refresh": "npm run clear_db && npm run init_db",
     "rank": "node src/db/calculateRank.js",
-    "init": "npm run init_db && npm run fetch_coin_list && npm run fetch_coin_history && npm run rank",
-    "start": "PORT=80 && pm2 start index.js",
+    "bootstrap":
+      "npm run init_db && npm run fetch_coin_list && npm run fetch_coin_history && npm run rank",
+    "server": "PORT=80 && pm2 start index.js",
+    "start": "npm run server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "prettier --write 'src/**/*.js'"
   },

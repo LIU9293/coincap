@@ -46,7 +46,29 @@ const getAllCoinsForDay = day => {
   });
 };
 
+const getAllCoins = () => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `
+      use coin;
+
+      SELECT coinName, coinCode, coinRank from coinList
+      ORDER BY coinRank;
+      ;
+    `,
+      (err, res) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(res[1]);
+        }
+      }
+    );
+  });
+};
+
 module.exports = {
   getCoinHistory,
   getAllCoinsForDay,
+  getAllCoins,
 };
