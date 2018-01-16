@@ -10,7 +10,7 @@ const getCoinHistory = (coinCode, start, end) => {
       `
       use coin;
 
-      SELECT recordDate, marketCap, close, volume, coinRank from coinHistory
+      SELECT recordDate, marketCap, close, volume, coinRank, coinCode, coinName from coinHistory
       WHERE coinCode='${coinCode}' and recordDateUnix >= ${startUnix} and recordDateUnix <= ${endUnix};
     `,
       (err, res) => {
