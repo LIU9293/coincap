@@ -1,0 +1,19 @@
+{
+  extends: ['airbnb-base', 'prettier'],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'no-console': 'off',
+    'no-unused-vars': 'warn',
+    'error-body-style': 'off',
+    'import/newline-after-import': 'off',
+    'arrow-body-style': 'off',
+    'prefer-destructuring': 'off',
+    'prefer-arrow-callback': 'off',
+    'operator-assignment': 'off',
+    'no-underscore-dangle': 'off',
+    'no-lonely-if': 'off',
+    'func-names': 'off',
+    'no-plusplus': 'off'
+  }
+}
