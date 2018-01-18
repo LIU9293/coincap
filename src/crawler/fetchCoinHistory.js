@@ -18,11 +18,11 @@ const insertOneRecord = () => {
       connection.end();
       return;
     }
-    console.log(
-      `the coin ${coinHistory[coinHistoryIndex].coinCode} - ${
-        coinHistory[coinHistoryIndex].date
-      } inserted`
-    );
+    // console.log(
+    //   `the coin ${coinHistory[coinHistoryIndex].coinCode} - ${
+    //     coinHistory[coinHistoryIndex].date
+    //   } inserted`
+    // );
     if (coinHistoryIndex === coinHistory.length - 1) {
       if (coinListIndex === MAX_COIN_INDEX) {
         console.log('------ finished ------');
