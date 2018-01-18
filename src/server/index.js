@@ -13,10 +13,10 @@ app.use(cors());
 // gzip
 app.use(compression());
 
-app.get('/api/coin_history/:coinCode', (req, res) => {
-  const { coinCode } = req.params;
+app.get('/api/coin_history/:coinName', (req, res) => {
+  const { coinName } = req.params;
   const { start, end } = req.query;
-  getCoinHistory(coinCode, start, end)
+  getCoinHistory(coinName, start, end)
     .then(data => res.json(data))
     .catch(err => res.send(err));
 });
