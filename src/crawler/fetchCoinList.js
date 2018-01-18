@@ -13,7 +13,7 @@ const insertOneCoin = () => {
       connection.end();
       return;
     }
-    console.log(`the coin ${coinList[index].coinCode} inserted`);
+    // console.log(`the coin ${coinList[index].coinCode} inserted`);
     if (index === coinList.length - 1) {
       console.log('get all coins success, finished !');
       connection.end();
