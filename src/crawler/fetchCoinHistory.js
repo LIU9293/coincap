@@ -27,7 +27,7 @@ const insertOneRecord = () => {
       return;
     }
     if (coinHistoryIndex === coinHistory.length - 1) {
-      if (coinListIndex === MAX_COIN_INDEX) {
+      if (coinListIndex === parseInt(MAX_COIN_INDEX, 10)) {
         console.log('------ finished ------');
         connection.end();
         return;
