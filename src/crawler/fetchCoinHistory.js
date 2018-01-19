@@ -13,16 +13,22 @@ let coinHistory = [];
 
 const insertOneRecord = () => {
   insertCoinHistory(coinHistory[coinHistoryIndex], (error, connection) => {
+    if (!coinHistory[coinHistoryIndex]) {
+      console.log('*****************************');
+      console.log(
+        '* error: ',
+        `current coin is: ${coinList[coinListIndex - 1]}`
+      );
+      console.log('*        ', `coin history length is: ${coinHistory.length}`);
+      console.log('*        ', `coin history index is: ${coinHistoryIndex}`);
+      console.log('*****************************');
+    }
+
     if (error) {
       console.log('===== error: =====\n', error);
       connection.end();
       return;
     }
-    // console.log(
-    //   `the coin ${coinHistory[coinHistoryIndex].coinCode} - ${
-    //     coinHistory[coinHistoryIndex].date
-    //   } inserted`
-    // );
     if (coinHistoryIndex === coinHistory.length - 1) {
       if (coinListIndex === MAX_COIN_INDEX) {
         console.log('------ finished ------');
@@ -44,11 +50,6 @@ const insertOneRecord = () => {
 
 const getNextHistory = () => {
   const nextCoin = coinList[coinListIndex];
-  console.log(
-    `----- will fetch ${nextCoin.coinName} data, it is ${coinListIndex}/${
-      coinList.length
-    } ------`
-  );
   getCoinHistory(nextCoin.coinName, nextCoin.coinCode, history => {
     coinHistory = history;
     coinHistoryIndex = 0;
