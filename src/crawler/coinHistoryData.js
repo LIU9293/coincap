@@ -8,7 +8,7 @@ const mapCoinHistoryData = (coinName, coinCode, callback) => {
       console.log(error);
     } else {
       const $ = res.$;
-      const bodyString = $('tbody').text();
+      const bodyString = $('tbody:first').text();
 
       const dataArray = bodyString
         .split('\n')
