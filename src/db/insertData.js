@@ -3,8 +3,6 @@ connection.connect();
 
 function insertCoinList(coin, callback) {
   const query = `
-    use coin;
-
     INSERT INTO coinList
     (coinName, coinCode, coinRank) VALUES
     ('${coin.coinName}', '${coin.coinCode}', ${coin.rank});
@@ -21,8 +19,6 @@ function insertCoinList(coin, callback) {
 
 function insertCoinHistory(coin, callback) {
   const query = `
-    use coin;
-
     INSERT INTO coinHistory
     (coinName, coinCode, recordDate, recordDateUnix, open, close, high, low, volume, marketCap) VALUES
     ('${coin.coinName}',
@@ -40,6 +36,8 @@ function insertCoinHistory(coin, callback) {
 
   connection.query(query, err => {
     if (err) {
+      console.log('insert coin history error:');
+      console.log(JSON.stringify(coin, null, 2));
       callback(err, connection);
     } else {
       callback(null, connection);

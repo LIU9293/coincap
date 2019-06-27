@@ -19,8 +19,6 @@ const eventEmitter = new events.EventEmitter();
 
 const getDayCoinsList = () => {
   const query = `
-    use coin;
-
     select * from coinHistory
     where recordDate='${recordDateList[recordDateListIndex]}' and marketCap > 0
     order by marketCap desc;
@@ -42,7 +40,6 @@ const getDayCoinsList = () => {
 const calculateNext = () => {
   connection.query(
     `
-    use coin;
     UPDATE coinHistory set coinRank=${dayCoinListIndex + 1}
     where _id=${dayCoinList[dayCoinListIndex]._id};
   `,
