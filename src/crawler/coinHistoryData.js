@@ -71,6 +71,7 @@ const mapCoinHistoryData = (coinName, coinCode, callback) => {
 
 const getHistoryDataForCoin = (coinName, coinCode, callback) => {
   const C = new Crawler({
+    maxConnections: 1,
     callback: mapCoinHistoryData(coinName, coinCode, callback),
   });
 
