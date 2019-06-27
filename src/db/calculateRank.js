@@ -71,7 +71,7 @@ connection.query(getAllDates, (err, res) => {
     console.log(err);
     connection.end();
   } else {
-    recordDateList = res[1].map(item => item.recordDate);
+    recordDateList = res[0].map(item => item.recordDate);
     getDayCoinsList();
   }
 });
