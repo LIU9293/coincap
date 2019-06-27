@@ -48,7 +48,9 @@ const insertOneRecord = () => {
 
 const getNextHistory = () => {
   const nextCoin = coinList[coinListIndex];
+  console.log(`getting history of coin ${nextCoin.coinName}`)
   getCoinHistory(nextCoin.coinName, nextCoin.coinCode, history => {
+    console.log(`histroy of ${nextCoin.coinName} got, length ${history.length}`);
     coinHistory = history;
     coinHistoryIndex = 0;
     coinListIndex = coinListIndex + 1;
