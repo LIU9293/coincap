@@ -52,7 +52,7 @@ const getNextHistory = () => {
     console.log(`the coin ${nextCoin.coinCode} history got, length ${history.length}`);
     if (history.length === 0) {
       console.log(`the coin ${nextCoin.coinCode} history strange, will retry...`);
-      return getNextHistory();
+      return setTimeout(getNextHistory, 1000);
     }
     coinHistory = history;
     coinHistoryIndex = 0;
