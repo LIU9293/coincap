@@ -3,7 +3,6 @@
 const events = require('events');
 const connection = require('./index');
 const getAllDates = `
-  use coin;
   select distinct(recordDate) from coinHistory;
 `;
 
@@ -30,7 +29,7 @@ const getDayCoinsList = () => {
       connection.end();
     } else {
       dayCoinListIndex = 0;
-      dayCoinList = res[1];
+      dayCoinList = res;
       recordDateListIndex = recordDateListIndex + 1;
       eventEmitter.emit('CALCULATE_NEXT');
     }
