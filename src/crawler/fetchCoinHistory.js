@@ -15,6 +15,7 @@ const insertOneRecord = () => {
   if (!coinHistory[coinHistoryIndex]) {
     console.log('*****************************');
     console.log('* error: ', `current coin is: ${coinList[coinListIndex - 1]}`);
+    console.log('*        ', `coin list length: ${coinList.length}. coin list index: ${coinListIndex}`)
     console.log('*        ', `coin history length is: ${coinHistory.length}`);
     console.log('*        ', `coin history index is: ${coinHistoryIndex}`);
     console.log('*****************************');
