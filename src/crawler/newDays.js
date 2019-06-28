@@ -17,7 +17,7 @@ const getLastDate = () => {
           console.log(`get last day error: `, err);
           reject(err)
         } else {
-          resolve(res[0].recordDateUnix)
+          resolve(res[0].recordDateUnix * 1000)
         }
       }
     )
@@ -25,7 +25,6 @@ const getLastDate = () => {
 };
 
 const getData = async date => {
-
   const nextDate = moment(date).add(1, 'd').format('YYYY-MM-DD');
   const API = `https://web-api.coinmarketcap.com/v1/cryptocurrency/listings/historical?date=${nextDate}`;
 
