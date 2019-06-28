@@ -48,11 +48,12 @@ const insert = (data, date, dateUnix) => {
         dateUnix,
         item.quote.USD.price,
         item.quote.USD.volume_24h,
-        item.quote.USD.market_cap
+        item.quote.USD.market_cap,
+        item.cmc_rank
       ]
     })
     connection.query(`
-      INSERT INTO coinHistory (coinName, coinCode, recordDate, recordDateUnix, close, volume, marketCap) VALUES ?
+      INSERT INTO coinHistory (coinName, coinCode, recordDate, recordDateUnix, close, volume, marketCap, coinRank) VALUES ?
     `, [formattedData], (err, res) => {
       if (err) {
         console.log(`insert data error: `, err);
@@ -70,7 +71,7 @@ const run = async () => {
     console.log(`last date is ${moment(date).format('YYYY-MM-DD')}, next is ${nextDate}`);
     const data = await getData(date);
     console.log(`${nextDate} data got, length ${data.length}`);
-    const res = await insert(data, nextDate, moment(nextDate).format('X'));
+    const res = await insert(data, moment(date).add(1, 'd').format('MMM DD, YYYY'), moment(nextDate).format('X'));
 
     console.log(`insert data done for ${nextDate}, will wait for next one!`);
     setTimeout(run, 12 * 60 * 60 * 1000)
