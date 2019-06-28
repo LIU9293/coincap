@@ -8,8 +8,6 @@ const getCoinHistory = (coinName, start, end) => {
   return new Promise((resolve, reject) => {
     connection.query(
       `
-      use coin;
-
       SELECT recordDate, marketCap, close, volume, coinRank, coinCode, coinName from coinHistory
       WHERE coinName='${coinName}' and recordDateUnix >= ${startUnix} and recordDateUnix <= ${endUnix}
       ORDER BY recordDateUnix;
@@ -30,8 +28,6 @@ const getAllCoinsForDay = day => {
   return new Promise((resolve, reject) => {
     connection.query(
       `
-      use coin;
-
       SELECT recordDate, coinCode, coinName, marketCap, close, volume, coinRank from coinHistory
       WHERE recordDate='${recordDate}'
       ORDER BY coinRank;
@@ -51,8 +47,6 @@ const getAllCoins = () => {
   return new Promise((resolve, reject) => {
     connection.query(
       `
-      use coin;
-
       SELECT coinName, coinCode, coinRank from coinList
       ORDER BY coinRank;
       ;
