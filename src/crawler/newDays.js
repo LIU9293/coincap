@@ -26,7 +26,7 @@ const getLastDate = () => {
 
 const getData = async date => {
   const nextDate = moment(date).add(1, 'd').format('YYYY-MM-DD');
-  const API = `https://web-api.coinmarketcap.com/v1/cryptocurrency/listings/historical?date=${nextDate}`;
+  const API = `https://web-api.coinmarketcap.com/v1/cryptocurrency/listings/historical?date=${nextDate}&start=1&limit=3000`;
 
   const res = await fetch(API);
   const json = await res.json();
@@ -52,11 +52,10 @@ const insert = (data, date, dateUnix) => {
       ]
     })
     connection.query(`
-      INSERT INTO coinHistory
-      (coinName, coinCode, recordDate, recordDateUnix, close, volume, marketCap) VALUES
+      INSERT INTO coinHistory (coinName, coinCode, recordDate, recordDateUnix, close, volume, marketCap) VALUES ?
     `, [formattedData], (err, res) => {
       if (err) {
-        console.log(`insert data error: `, error);
+        console.log(`insert data error: `, err);
       } else {
         resolve(res)
       }
